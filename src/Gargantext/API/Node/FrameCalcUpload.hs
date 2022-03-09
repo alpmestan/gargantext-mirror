@@ -18,7 +18,7 @@ import Servant.Job.Async
 import Web.FormUrlEncoded (FromForm)
 
 import Gargantext.API.Admin.Orchestrator.Types (JobLog(..), AsyncJobs)
-import Gargantext.API.Job (jobLogInit, jobLogSuccess, jobLogFail)
+import Gargantext.API.Utils.Job (jobLogInit, jobLogSuccess, jobLogFail)
 import Gargantext.API.Node.Corpus.New (addToCorpusWithForm)
 import Gargantext.API.Node.Corpus.New.File (FileType(..))
 import Gargantext.API.Node.Types (NewWithForm(..))

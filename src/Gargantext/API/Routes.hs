@@ -33,7 +33,8 @@ import Gargantext.API.Admin.Auth.Types (AuthRequest, AuthResponse, Authenticated
 import Gargantext.API.Admin.FrontEnd (FrontEndAPI)
 import Gargantext.API.Context
 import Gargantext.API.Count  (CountAPI, count, Query)
-import Gargantext.API.Job (jobLogInit)
+import Gargantext.API.Utils.Job (jobLogInit)
+import qualified Gargantext.API.Job as Job
 import Gargantext.API.Ngrams (TableNgramsApi, apiNgramsTableDoc)
 import Gargantext.API.Node
 import Gargantext.API.Prelude
@@ -174,6 +175,8 @@ type GargPrivateAPI' =
            :<|> List.GETAPI
            :<|> List.JSONAPI
            :<|> List.CSVAPI
+
+           :<|> Job.API
 {-
            :<|> "wait"   :> Summary "Wait test"
                          :> Capture "x" Int
@@ -255,6 +258,8 @@ serverPrivateGargAPI' (AuthenticatedUser (NodeId uid))
      :<|> List.getApi
      :<|> List.jsonApi
      :<|> List.csvApi
+
+     :<|> Job.api
 --     :<|> waitAPI
 
 

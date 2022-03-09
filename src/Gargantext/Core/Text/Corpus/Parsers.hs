@@ -31,7 +31,7 @@ import Data.Either(Either(..))
 import Data.Either.Extra (partitionEithers)
 import Data.List (concat, lookup)
 import Data.Ord()
-import Data.String (String())
+import Data.String ( String() )
 import Data.String()
 import Data.Text (Text)
 import Data.Text.Encoding (decodeUtf8)
@@ -42,7 +42,7 @@ import qualified Data.ByteString.Char8 as DBC
 import qualified Data.ByteString.Lazy  as DBL
 import qualified Data.Map              as DM
 import qualified Data.Text             as DT
-import qualified Prelude as Prelude
+import qualified Prelude
 import System.IO.Temp (emptySystemTempFile)
 
 import Gargantext.Core (Lang(..))

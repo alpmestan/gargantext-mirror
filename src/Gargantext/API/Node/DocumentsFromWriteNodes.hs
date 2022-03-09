@@ -24,7 +24,7 @@ import Data.Swagger
 import qualified Data.Text as T
 import Gargantext.API.Admin.Orchestrator.Types (JobLog(..), AsyncJobs)
 import Gargantext.API.Admin.Types (HasSettings)
-import Gargantext.API.Job (jobLogSuccess, jobLogFailTotalWithMessage)
+import Gargantext.API.Utils.Job (jobLogSuccess, jobLogFailTotalWithMessage)
 import Gargantext.API.Prelude (GargServer)
 import Gargantext.Core (Lang(..))
 import Gargantext.Core.Text.Corpus.Parsers.FrameWrite

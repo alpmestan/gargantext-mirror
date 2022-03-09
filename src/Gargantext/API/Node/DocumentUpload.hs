@@ -14,7 +14,7 @@ import Servant.Job.Async
 import qualified Data.Text as T
 
 import Gargantext.API.Admin.Orchestrator.Types (JobLog(..), AsyncJobs)
-import Gargantext.API.Job (jobLogSuccess)
+import Gargantext.API.Utils.Job (jobLogSuccess)
 import Gargantext.API.Prelude
 import Gargantext.Core (Lang(..))
 import Gargantext.Core.Text.Corpus.Parsers.Date (dateSplit)

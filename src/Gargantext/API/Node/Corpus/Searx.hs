@@ -24,7 +24,7 @@ import Gargantext.Prelude.Config
 
 import Gargantext.API.Admin.Orchestrator.Types (JobLog(..))
 --import Gargantext.API.Admin.Types (HasSettings)
-import Gargantext.API.Job (jobLogSuccess)
+import Gargantext.API.Utils.Job (jobLogSuccess)
 import Gargantext.Core (Lang(..), PosTagAlgo(..))
 import qualified Gargantext.Core.Text.Corpus.API as API
 import Gargantext.Core.Text.List (buildNgramsLists)

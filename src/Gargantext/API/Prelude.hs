@@ -76,6 +76,7 @@ type GargServerC env err m =
   , HasNodeStory env err m
   , EnvC  env
   , ErrC      err
+  , MonadPushEvent    JobLog m
   , ToJSON err
   )
 
