@@ -5,6 +5,7 @@ extra-package-dbs: []
 skip-ghc-check: true
 packages:
 - .
+- ../servant-job
   #- 'deps/gargantext-graph'
   #- 'deps/haskell-opaleye'
 
@@ -79,8 +80,8 @@ extra-deps:
 
   # NP libs
   #- git: https://github.com/np/servant-job.git # waiting for PR
-- git: https://github.com/alpmestan/servant-job.git
-  commit: ceb251b91e8ec1804198422a3cdbdab08d843b79
+#- git: https://github.com/CGenie/servant-job.git
+#  commit: 44e241078e9c16957d9fdb0a6be39063e06379a8
   #- git: https://github.com/np/patches-map
 - git: https://github.com/delanoe/patches-map
   commit: 76cae88f367976ff091e661ee69a5c3126b94694

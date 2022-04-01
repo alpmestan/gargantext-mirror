@@ -14,7 +14,8 @@ import Gargantext.Prelude
 type API = Summary "Job API (for testing)"
             :> "jobs"
             :> AsyncJobs JobLog '[JSON] () JobLog
-api :: GargServer API
+
+-- api :: GargServer API
 api =
   serveJobsAPI $ fromJobFunctionS (jobLogInit 0) $ JobFunctionS $ \input -> do
     pushEvent (addRem 2)
