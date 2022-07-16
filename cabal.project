@@ -1,6 +1,6 @@
 packages: .
 
-allow-newer: base, accelerate, servant, time, classy-prelude
+allow-newer: *
 
 -- Patches
 source-repository-package
@@ -61,6 +61,11 @@ source-repository-package
   location: https://gitlab.iscpif.fr/gargantext/crawlers/hal.git
   tag: 020f5f9b308f5c23c925aedf5fb11f8b4728fb19
 
+source-repository-package
+  type: git
+  location: https://gitlab.iscpif.fr/gargantext/crawlers/arxiv-api.git
+  tag: f3e517cc40d92e282c5245b23d253d2ca3f802e5
+
 -- Graphs
 source-repository-package
   type: git
@@ -116,16 +121,23 @@ source-repository-package
   tag: fc24987d3af348a677748f226e48d64779a694e9
 
 
--- Accelerate
+-- Accelerate and numerical stuffs
 source-repository-package
   type: git
-  location: https://gitlab.iscpif.fr/anoe/accelerate.git
-  tag: f5c0e0071ec7b6532f9a9cd3eb33d14f340fbcc9
+  location: https://github.com/alpmestan/accelerate.git
+  tag: 640b5af87cea94b61c7737d878e6f7f2fca5c015
 
 source-repository-package
   type: git
   location: https://gitlab.iscpif.fr/anoe/accelerate-utility.git
   tag: 83ada76e78ac10d9559af8ed6bd4064ec81308e4
+
+source-repository-package
+  type: git
+  location: https://github.com/alpmestan/sparse-linear.git
+  tag: bc6ca8058077b0b5702ea4b88bd4189cfcad267a
+  subdir: sparse-linear
+
 
 
 -- Wikidata 
@@ -134,8 +146,43 @@ source-repository-package
   location: https://github.com/rspeer/wikiparsec.git
   tag: 9637a82344bb70f7fa8f02e75db3c081ccd434ce
 
+source-repository-package
+  type: git
+  location: https://gitlab.iscpif.fr/gargantext/haskell-infomap.git
+  tag: 72bf2a0565206a3bb2ee96a79788ab4a0b3d9885
 
-constraints: unordered-containers==0.2.14.*,
-             servant-ekg==0.3.1,
-             time==1.9.3,
-             stm==2.5.0.1
+source-repository-package
+  type: git
+  location: https://gitlab.iscpif.fr/gargantext/gargantext-graph.git
+  tag: 13131f5173e2e2ab35b968e53f0feaeee13ad8ac
+
+source-repository-package
+  type: git
+  location: https://github.com/sebastiaanvisser/fclabels.git
+  tag: b2c6d1d6677f301cd8e24dfa835494a55f034b8c
+
+source-repository-package
+  type: git
+  location: https://github.com/MuKnIO/llvm-hs.git
+  tag: fe8fd556e8d2cc028f61d4d7b4b6bf18c456d090
+  subdir: llvm-hs-pure
+          llvm-hs
+
+source-repository-package
+  type: git
+  location: https://github.com/alpmestan/taggy-lens.git
+  tag: 87235bfb9c3ee8b3d487c1cf48a22f247e59286d
+
+source-repository-package
+  type: git
+  location: https://github.com/alpmestan/hmatrix.git
+  tag: b9fca8beee0f23c17a6b2001ec834d071709e6e7
+  subdir: packages/base
+
+constraints: vector <0.13, aeson <2, singletons <3
+package hmatrix
+        ghc-options: -O2 -fsimpl-tick-factor=10000 -fdicts-cheap -fdicts-strict -flate-dmd-anal  -fno-state-hack
+package sparse-linear
+        ghc-options: -O2 -fsimpl-tick-factor=10000 -fdicts-cheap -fdicts-strict -flate-dmd-anal  -fno-state-hack
+package gargantext-graph
+        ghc-options: -O2 -fsimpl-tick-factor=10000 -fdicts-cheap -fdicts-strict -flate-dmd-anal  -fno-state-hack

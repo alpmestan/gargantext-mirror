@@ -1,8 +1,7 @@
-resolver:
- url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/28.yaml
-flags:
-    accelerate:
-        debug: true
+resolver: nightly-2022-07-15
+# flags:
+#     accelerate:
+#         debug: true
 extra-package-dbs: []
 skip-ghc-check: true
 packages:
@@ -32,6 +31,8 @@ ghc-options:
 #  "$everything": -haddock
 
 extra-deps:
+- git: https://github.com/sebastiaanvisser/fclabels.git
+  commit: b2c6d1d6677f301cd8e24dfa835494a55f034b8c
 - git: https://gitlab.iscpif.fr/gargantext/haskell-gargantext-prelude.git
   commit: 08096a4913572cf22762fa77613340207ec6d9fd
 - git: https://gitlab.iscpif.fr/gargantext/gargantext-graph.git
@@ -100,11 +101,11 @@ extra-deps:
 - git: https://github.com/alpmestan/haskell-igraph.git
   commit: 9f55eb36639c8e0965c8bc539a57738869f33e9a
 - git: https://gitlab.iscpif.fr/gargantext/haskell-infomap.git
-  commit: 76b795c1eaca37f43418d07da9fbdf5f4e7d8f5c
+  commit: 72bf2a0565206a3bb2ee96a79788ab4a0b3d9885
 
   # Accelerate Linear Algebra and specific instances
 - git: https://github.com/alpmestan/accelerate.git
-  commit: 199a1f6594406229d3c5f402443b09d62f92e640
+  commit: 640b5af87cea94b61c7737d878e6f7f2fca5c015
 - git: https://github.com/alpmestan/accelerate-arithmetic.git
   commit: a110807651036ca2228a76507ee35bbf7aedf87a
 - git: https://gitlab.iscpif.fr/amestanogullari/accelerate-utility.git
@@ -118,7 +119,6 @@ extra-deps:
   commit: 9637a82344bb70f7fa8f02e75db3c081ccd434ce
 
   # Gargantext-graph
-- eigen-3.3.7.0@sha256:7c24a86426b238e02ba0ac2179cc44997518b443a13828ed7a791fe49a6dffa5,82060
 - git: https://github.com/alpmestan/sparse-linear.git
   commit: bc6ca8058077b0b5702ea4b88bd4189cfcad267a
   subdirs:
@@ -127,20 +127,29 @@ extra-deps:
   commit: b9fca8beee0f23c17a6b2001ec834d071709e6e7
   subdirs:
     - packages/base
+- git: https://github.com/IHaskell/IHaskell.git
+  commit: 5bcfb8976cbd4dbdf0ee6e38b2c0d0021068b354
+  subdirs:
+    - ghc-parser
+- git: https://github.com/MuKnIO/llvm-hs.git
+  commit: fe8fd556e8d2cc028f61d4d7b4b6bf18c456d090
+  subdirs:
+    - llvm-hs
+    - llvm-hs-pure
+- git: https://github.com/alpmestan/taggy-lens.git
+  commit: 87235bfb9c3ee8b3d487c1cf48a22f247e59286d
 
+- eigen-3.3.7.0@sha256:7c24a86426b238e02ba0ac2179cc44997518b443a13828ed7a791fe49a6dffa5,82060
 - monad-logger-aeson-0.2.0.0
 # required by monad-logger-aeson
 - context-0.2.0.0@sha256:6b643adb4a64fe521873d08df0497f71f88e18b9ecff4b68b4eef938e446cfc9,1886
-
 - random-1.2.1
-
-      # Others dependencies (using stack resolver)
+# Others dependencies (using stack resolver)
 - constraints-extras-0.3.1.0@sha256:12016ebb91ad5ed2c82bf7e48c6bd6947d164d33c9dca5ac3965de1bb6c780c0,1777
 - KMP-0.2.0.0@sha256:6dfbac03ef00ebd9347234732cb86a40f62ab5a80c0cc6bedb8eb51766f7df28,2562
 - Unique-0.4.7.8@sha256:9661f45aa31dde119a2114566166ea38b011a45653337045ee4ced75636533c0,2067
 - dependent-sum-0.7.1.0@sha256:0e419237f5b86da3659772afff9cab355c0f8d5b3fdb15a5b30e673d8dc83941,2147
 - duckling-0.2.0.0@sha256:84becd4e48ee3676cdd6fe5745a77ee60e365ea730cd759610c8a7738f3eb4a6,60543
-- fclabels-2.0.5@sha256:817006077632bd29e637956154aa33d3c10a59be0791c308cef955eb951b2675,4473
 - full-text-search-0.2.1.4@sha256:81f6df3327e5b604f99b15e78635e5d6ca996e504c21d268a6d751d7d131aa36,6032
 - fullstop-0.1.4@sha256:80a3e382ef53551bb936e7da8b2825621df0ea169af1212debcb0a90010b30c8,2044
 - hgal-2.0.0.2@sha256:13d58afd0668b9cb881c612eff8488a0e289edd4bbffa893df4beee60cfeb73b,653
@@ -158,17 +167,22 @@ extra-deps:
 - xmlbf-0.6.1@sha256:57867fcb39e0514d17b3328ff5de8d241a18482fc89bb742d9ed820a6a2a5187,1540
 - xmlbf-xeno-0.2@sha256:39f70fced6052524c290cf595f114661c721452e65fc3e0953a44e7682a6a6b0,950
 
-# need Vector.uncons
-- vector-0.12.3.0@sha256:0ae2c1ba86f0077910be242ec6802cc3d7725fe7b2bea6987201aa3737b239b5,7953
-
 # needed for wikiparsec
 - fast-tagsoup-utf8-only-1.0.5@sha256:9292c8ff275c08b88b6013ccc410182552f180904214a07ad4db932ab462aaa1,1651
 # wikipedia crawl
-- taggy-lens-0.1.2@sha256:091ca81d02bd3d7fb493dce0148e1a38f25eb178a1ebd751043a23239e5e3265,3009
 - taggy-0.2.1@sha256:7bc55ddba178971dc6052163597f0445a0a2b5b0ca0e84ce651d53d722e3c265,4662
 
 - servant-ekg-0.3.1@sha256:19bd9dc3943983da8e79d6f607614c68faea4054fb889d508c8a2b67b6bdd448,2203
-
+- aeson-lens-0.5.0.0@sha256:7b557d74d1f35ce47905d5ab65d9c87bb59843e24177341995d2bb1ceeb177fb,994
+- graphviz-2999.20.1.0@sha256:fac315d1a260d1625a938e5164362b080c9110f02aa0a71b7b77b25173cf7e77,7703
+- ihaskell-0.10.2.2@sha256:4911d2f9db98a41ed64d77b28907806d8c688e90ee7ea2b20668daebb1628693,6602
+- password-3.0.1.0@sha256:ac09d2f52c04071fb96519eb4776ca4117800546d0da5daffa36a7ff410c93f0,4124
+- protolude-0.3.1@sha256:1cc9e5a5c26c33a43c52b554443dd9779fef13974eaa0beec7ca6d2551b400da,2647
+- servant-auth-swagger-0.2.10.1@sha256:fa8f542dc6f7614f589673bfaa1aa92d824daba6fb64495d68b3b3f4d4e5df32,2903
+- snap-core-1.0.5.0@sha256:657e031e72418a99ed2301f6d2854d24fe1deb9db8cf7807ad60768aa4009a9e,9939
+- snap-server-1.1.2.0@sha256:325378e4f7a50b1a94cf6175e11b9ac6db5edcdd87226f2d5997999334b85c46,15200
+- io-streams-haproxy-1.0.1.0@sha256:e756f17c5b07b62103d75c1535cb454ac8d098a4b726c8a3bafb334071646a1c,3084
+- readable-0.3.1@sha256:48e15b61329a09a0b1e6b4a4b7d3e2745e13761ea67bc8dfdc750dd35814b6e7,915
 
 # For the graph clustering
 ghc-options:

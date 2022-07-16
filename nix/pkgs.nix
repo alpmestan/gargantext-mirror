@@ -1,8 +1,23 @@
-{ pkgs ? import ./pinned-21.11.nix {} }:
+{ pkgs ? import ./pinned-22.05.nix {} }:
 
+let hspkgs = pkgs.haskell.packages.ghc922.extend (self: super: rec {
+      cabalsrc = super.fetchFromGitHub {
+        owner = "haskell";
+        repo = "cabal";
+        rev = "3c2da3516dc5cac224da6ceba834bb611552a246";
+        sha256 = "0rs9bxxrw4wscf4a8yl776a8g880m5gcm75q06yx2cn3lw2b7v22";
+      };
+      Cabal = super.Cabal.override {
+        src = cabalsrc + "/Cabal";
+      };
+      cabal-install = super.cabal-install.override {
+        src = cabalsrc + "/cabal-install";
+      };
+    });
+in
 rec {
   inherit pkgs;
-  ghc = pkgs.haskell.compiler.ghc8107;
+  ghc = pkgs.haskell.compiler.ghc922;
   hsBuildInputs = [
     ghc
     pkgs.cabal-install
@@ -30,8 +45,9 @@ rec {
     expat
     icu
     graphviz
-    llvm
-    libllvm
+    llvm_12
+    pkgconfig
+    libffi
   ];
   libPaths = pkgs.lib.makeLibraryPath nonhsBuildInputs;
   shellHook = ''
